@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 10rem;
+            padding: 5px;
+        }
+    </style>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- <img src="/image/1.jpg" alt=""> -->
+        <!-- <img v-bind:src="imgUrl" alt="" style="width: 16rem;"> -->
+        <img :src="imgUrl" :alt="name" :style="{
+            width: `${w}rem`,
+            'background-color': '#ccc',
+            backgroundColor: bg,
+        }">
+        <button @click="addw">圖片加大</button>
+        <!-- <img :src="imgUrl" alt=""> -->
+    </div>
+    <script>
+        // console.log(Vue);
+        const app = Vue.createApp({
+            data() {
+                return {
+                    name: 'boy',
+                    imgUrl: '/image/1.jpg',
+                    bg: '#ccc',
+                    w: 1,
+                }
+            },
+            methods: {
+                addw() {
+                    if(this.w === 9) return
+                    this.w += 1
+                    this.bg = `#${this.w}${this.w}${this.w}`
+                },
+            },
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>
